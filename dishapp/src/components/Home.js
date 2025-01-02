@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import Dish from './Dish';
 import DishForm from './DishForm';
+import DishSearch from './DishSearch';
 
 function Home() {
     const [dishes, setDishes] = useState(() => {
@@ -9,11 +10,15 @@ function Home() {
     });
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [addDishOpen, setAddDishOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
     const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
     const closeSidebar = () => setSidebarOpen(false);
 
     const handleAddDish = (dishData) => {
         setDishes([...dishes, dishData]);
+    };
+    const handleSearchDish = (input) => {
+
     };
     const handleDeleteDish = (index) => {
         const updatedDishes = dishes.filter((_, i) => i !== index);
@@ -23,6 +28,10 @@ function Home() {
     useEffect(() => {
         localStorage.setItem('dishes', JSON.stringify(dishes));
     },[dishes]);
+
+    const filteredDishes = dishes.filter((dish) =>
+        dish.dishName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
     <>
@@ -86,7 +95,7 @@ function Home() {
                     {addDishOpen ? 'Close Form' : 'Add New Dish'}
                 </button>
                 <DishForm addDishOpen={addDishOpen} onAddDish={handleAddDish} />
-                </li>   
+                </li> 
             </ul>
         </div>
         </aside>
@@ -104,9 +113,19 @@ function Home() {
             </div>
         </header>
         <main className="relative">
-            <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <Dish dishes={dishes} onDelete={handleDeleteDish}/>
-            </div>
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    {/* Suchfeld */}
+                    <div className="mb-4">
+                        <input
+                            type="text"
+                            placeholder="Search for a dish"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="block w-full p-2 mb-4 border border-gray-300 rounded-lg"
+                        />
+                    </div>
+                    <Dish dishes={filteredDishes} onDelete={handleDeleteDish} />
+                </div>
         </main>
     </>
     );
