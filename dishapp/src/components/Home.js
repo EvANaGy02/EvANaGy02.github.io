@@ -108,7 +108,7 @@ function Home() {
         <header className="bg-gray-100 shadow relative">
             <div className="mx-auto max-w-full px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex justify-center">
-                <h1 className="text-3xl font-bold tracking-tight text-gray-700">Dish App</h1>
+                <h1 className="text-3xl font-bold tracking-tight text-gray-700">Recipes</h1>
             </div>
             </div>
         </header>
