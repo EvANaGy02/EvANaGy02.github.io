@@ -1,4 +1,4 @@
-# This is an App to organizse different dishes
+# This is an App to organize your dishes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
