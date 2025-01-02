@@ -1,14 +1,14 @@
-# This is an App to organize your dishes
+# This is an App to organize your recipes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available functions
 
-- create dishes
-- delete dishes
-- order dishes
-- filter dishes
-- search dishes
+- create recipes
+- delete recipes
+- order recipes
+- filter recipes
+- search recipes
 - etc.
 
 ## TODO
