@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 
 function Home() {
+  // Zustand für die Sidebar (ob sie offen ist oder nicht)
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  // Funktion zum Umschalten der Sidebar
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
+  // Funktion zum Schließen der Sidebar
+  const closeSidebar = () => setSidebarOpen(false);
 
   return (
     <>
@@ -43,10 +48,40 @@ function Home() {
             <a className="flex items-center p-1 text-gray-900 rounded-lg dark:text-white group text-xl font-semibold">
               <span className="ms-2">Actions</span>
             </a>
-            <li></li>
+            <li>
+              {/* Hier kannst du mehr Inhalt hinzufügen */}
+            </li>
+            {/* Schließen-Button innerhalb der Sidebar */}
+            <button
+              onClick={closeSidebar}
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white p-2"
+            >
+              <span className="sr-only">Close sidebar</span>
+              <svg
+                className="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 7.586l4.293-3.293a1 1 0 111.414 1.414L11.414 9l3.293 4.293a1 1 0 01-1.414 1.414L10 10.414l-4.293 3.293a1 1 0 01-1.414-1.414L8.586 9 4.293 4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </button>
           </ul>
         </div>
       </aside>
+
+      {/* Hintergrund für die Sidebar, der auch beim Klicken außerhalb die Sidebar schließt */}
+      {sidebarOpen && (
+        <div
+          onClick={closeSidebar}
+          className="fixed inset-0 bg-black opacity-50 z-30 sm:hidden"
+        ></div>
+      )}
 
       {/* Header */}
       <header className="bg-gray-100 shadow relative">
