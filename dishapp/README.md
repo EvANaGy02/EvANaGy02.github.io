@@ -10,3 +10,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - filter dishes
 - search dishes
 - etc.
+
+## TODO
+
+ * filter for labels
+ * label for vegetarian, meat, fish, etc.
+ * sort function
